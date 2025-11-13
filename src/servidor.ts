@@ -336,7 +336,7 @@ function apiBackend(operaciones: DefinicionesDeOperaciones) {
         res.status(200).send('<h1>Carga de datos JSON exitosa!</h1>');
     });
     //get para el render
-    app.get('/', (req, res) => {
+    app.get('/', (_, res) => {
         res.redirect('/login.html');
     });
 
