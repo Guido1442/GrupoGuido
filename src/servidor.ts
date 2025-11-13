@@ -246,7 +246,7 @@ function apiBackend(operaciones: DefinicionesDeOperaciones) {
       <html>
       <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/app/styleMenu.css">
+        <link rel="stylesheet" href="/styleMenu.css">
       </head>
       <body>
         <h1>AIDA API</h1>
