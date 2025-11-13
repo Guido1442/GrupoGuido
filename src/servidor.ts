@@ -406,11 +406,11 @@ function getEndPoints(tabla: string) {
         <head>
             <meta charset="UTF-8">
             <title>${titulo}</title>
-            <link rel="stylesheet" href="/style.css">
+            <link rel="stylesheet" href="/app/style.css">
         </head>
         <body>
             <h2>loading...</h2>
-            <script src="/tablaGenerico.js" type="module"></script>
+            <script src="/app/tablaGenerico.js" type="module"></script>
         </body>
         </html>`
         );
