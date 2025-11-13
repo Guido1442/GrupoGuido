@@ -1,0 +1,32 @@
+import 'dotenv/config';
+import { Client } from 'pg';
+
+export type DefinicionDeOperacion = {
+    operacion:string,
+    cantidadArgumentos:number,
+    accion:(clientDb: Client, ...argumentos: string[]) => Promise<any>,
+    descripcion?:string
+    visible?:boolean
+}
+
+export type DefinicionesDeOperaciones = DefinicionDeOperacion[]
+
+export type ElementoDeEjecucion = { operacion:string, argumentos:string[]}
+export type ListaDeEjecucion = ElementoDeEjecucion[]
+
+export async function orquestador(definicionOperaciones:DefinicionesDeOperaciones, listaDeEjecucion: ListaDeEjecucion){
+    let resultado:any = null;
+    console.log('Por procesar', listaDeEjecucion);
+    const clientDb = new Client({ connectionString: process.env.DATABASE_URL })
+    await clientDb.connect()
+    for (const {operacion, argumentos} of listaDeEjecucion) {
+        console.log('procesando', operacion);
+        const infoParametro = definicionOperaciones.find(p => p.operacion == operacion);
+        resultado = await infoParametro!.accion(
+            clientDb,
+            ...argumentos
+        );
+    }
+    await clientDb.end();
+    return resultado;
+}
