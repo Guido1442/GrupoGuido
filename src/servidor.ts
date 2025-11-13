@@ -15,7 +15,7 @@ import { chequearCantidadAprobadas } from "./aprobadas.js";
 
 const app = express()
 app.use(express.json());
-const port = 3000
+const port = process.env.PORT || 3000
 
 declare module 'express-session' {
     interface SessionData {
