@@ -335,6 +335,10 @@ function apiBackend(operaciones: DefinicionesDeOperaciones) {
         await cargarNovedadesAlumnosDesdeJson(alumnosJson);
         res.status(200).send('<h1>Carga de datos JSON exitosa!</h1>');
     });
+    //get para el render
+    app.get('/', (req, res) => {
+        res.redirect('/login.html');
+    });
 
     app.listen(port, () => {
         console.log(`Example app listening on port http://localhost:${port}/app/login`)
