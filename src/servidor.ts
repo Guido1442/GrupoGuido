@@ -11,6 +11,9 @@ import { cargarNovedadesAlumnosDesdeJson, operacionesAida } from './aida.js'
 import { crearApiCrud } from "./crud-basico.js";
 import { DiccionariosTablas } from "./diccionariosGetTablas.js";
 import { chequearCantidadAprobadas } from "./aprobadas.js";
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 
 const app = express()
@@ -335,7 +338,12 @@ function apiBackend(operaciones: DefinicionesDeOperaciones) {
         await cargarNovedadesAlumnosDesdeJson(alumnosJson);
         res.status(200).send('<h1>Carga de datos JSON exitosa!</h1>');
     });
-    //get para el render
+    //render
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
+
+    app.use(express.static(path.join(__dirname, '.')));
+
     app.get('/', (_, res) => {
         res.redirect('/login.html');
     });
