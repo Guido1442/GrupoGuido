@@ -19,6 +19,10 @@ import { dirname } from 'path';
 const app = express()
 app.use(express.json());
 const port = process.env.PORT
+//para el render
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 
 declare module 'express-session' {
     interface SessionData {
@@ -339,9 +343,6 @@ function apiBackend(operaciones: DefinicionesDeOperaciones) {
         res.status(200).send('<h1>Carga de datos JSON exitosa!</h1>');
     });
     //render
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = dirname(__filename);
-
     app.use(express.static(path.join(__dirname, '.')));
 
     app.get('/', (_, res) => {
