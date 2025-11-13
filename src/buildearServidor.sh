@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-npm install
+npm install typescript
 npx tsc
 
 cd ..
