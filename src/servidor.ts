@@ -136,7 +136,7 @@ app.get('/app/login', (req, res) => {
     if (req.session.usuario) {
         return res.redirect('/app/menu');
     }
-    const loginHtml = fs.readFileSync('login.html', 'utf8');
+    const loginHtml = fs.readFileSync(path.join(__dirname, 'login.html'), 'utf8');
     res.send(loginHtml);
 });
 
@@ -406,11 +406,11 @@ function getEndPoints(tabla: string) {
         <head>
             <meta charset="UTF-8">
             <title>${titulo}</title>
-            <link rel="stylesheet" href="/app/style.css">
+            <link rel="stylesheet" href="/style.css">
         </head>
         <body>
             <h2>loading...</h2>
-            <script src="/app/tablaGenerico.js" type="module"></script>
+            <script src="/tablaGenerico.js" type="module"></script>
         </body>
         </html>`
         );
