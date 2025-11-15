@@ -55,7 +55,7 @@ window.addEventListener('load', async function() {
     for (const campo of datosTabla!.campos){
         cel(row, campo);
     }
-    var req = await fetch('http://localhost:3000/api/v0/' + (datosTabla!.tabla === 'alumno' ? 'alumnos' : datosTabla!.tabla) + '/');
+    var req = await fetch('/api/v0/' + (datosTabla!.tabla === 'alumno' ? 'alumnos' : datosTabla!.tabla) + '/');
     var data = await req.json();
     data.forEach((registro:Record<string, string>) => {
         var row = table.insertRow();
@@ -103,7 +103,7 @@ window.addEventListener('load', async function() {
 
             console.log(`Borrando al ${datosTabla!.tabla}: ${id}`);
             try{
-                var req = await fetch('http://localhost:3000/api/v0/' + (datosTabla!.tabla === 'alumno' ? 'alumnos' : datosTabla!.tabla) + '/' + encodeURIComponent(id), {
+                var req = await fetch('/api/v0/' + (datosTabla!.tabla === 'alumno' ? 'alumnos' : datosTabla!.tabla) + '/' + encodeURIComponent(id), {
                     method: 'DELETE'
                 });
                 console.log(req.status);

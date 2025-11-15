@@ -193,7 +193,7 @@ window.onload = async function() {
     }
     try {
 
-        var req = await fetch('http://localhost:3000/api/v0/' + (tabla === 'alumno' ? 'alumnos' : tabla) + '/' + encodeURIComponent(idActual),{
+        var req = await fetch('/api/v0/' + (tabla === 'alumno' ? 'alumnos' : tabla) + '/' + encodeURIComponent(idActual),{
             method: 'GET'
         });
         var data = await req.json();
@@ -214,7 +214,7 @@ window.onload = async function() {
             datosEditados[campo.id] = form[campo.nuevoNombre].value || null;
         }
         try{
-            var req = await fetch('http://localhost:3000/api/v0/' + (tabla === 'alumno' ? 'alumnos' : tabla) + '/' + encodeURIComponent(idActual), {
+            var req = await fetch('/api/v0/' + (tabla === 'alumno' ? 'alumnos' : tabla) + '/' + encodeURIComponent(idActual), {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

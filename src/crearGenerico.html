@@ -144,7 +144,7 @@
             datosCreados[campo.id] = form[campo.id].value || null;
         }
         try{
-            var req = await fetch('http://localhost:3000/api/v0/' + (tabla === 'alumno' ? 'alumnos' : tabla), {
+            var req = await fetch('/api/v0/' + (tabla === 'alumno' ? 'alumnos' : tabla), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
