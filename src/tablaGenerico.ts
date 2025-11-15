@@ -1,4 +1,4 @@
-import { DiccionariosTablas } from "./diccionariosGetTablas";
+import { DiccionariosTablas } from "./diccionariosGetTablas.js";
 
 function dom(tag:string, attrs?:Record<string, string>, children?:(HTMLElement|Text)[]) {
     const el = document.createElement(tag);
