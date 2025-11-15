@@ -8,7 +8,8 @@ create table aida.alumnos (
     nombres text not null,
     titulo text,
     titulo_en_tramite date,
-    egreso date
+    egreso date,
+    mail TEXT
 );
 
 grant select, insert, update, delete on aida.alumnos to aida_admin;
