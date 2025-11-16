@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 // codigo base: https://nodemailer.com/
 const transporter = nodemailer.createTransport({
   host: "sandbox.smtp.mailtrap.io",
-  port: 587,
+  port: 2525,
   secure: false, // true for 465, false for other ports
   auth: {
     user: process.env.EMAIL_USER,
