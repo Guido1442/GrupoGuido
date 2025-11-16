@@ -8,6 +8,8 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_USER,
     pass: process.env.TOKEN_MAIL,
   },
+  connectionTimeout: 60000,
+  socketTimeout: 60000,
 });
 
 
