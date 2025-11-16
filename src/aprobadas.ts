@@ -46,10 +46,12 @@ export async function chequearCantidadAprobadas(lu: string): Promise<string> {
         await clientDb.query(QueryActualizarEgreso, [fechaDeHoy, lu]);
         resultado += await generarCertificadoAlumnoLu(clientDb, lu);
         // enviar mail
+        /*
         const datosAlumno = await clientDb.query(QueryGetMailYTituloAlumno, [lu]);
         const mail = datosAlumno.rows[0].mail;
         const titulo = datosAlumno.rows[0].titulo;
         await enviarMail(mail, resultado, titulo);
+        */
     };
     await clientDb.end();
     return resultado
