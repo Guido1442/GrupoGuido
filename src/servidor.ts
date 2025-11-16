@@ -363,21 +363,21 @@ crearApiCrud(app, '/api/v0', requireAuthAPI)
 
 //Estilos
 app.get('/app/styleMenu.css', (_, res) => {
-    res.sendFile(`${process.cwd()}/styleMenu.css`);
+    res.sendFile(path.resolve(__dirname, `../dist/styleMenu.css`));
 });
 
 app.get('/app/style.css', requireAuth, (_, res) => {
-    res.sendFile(`${process.cwd()}/style.css`);
+    res.sendFile(path.resolve(__dirname, `../dist/style.css`));
 });
 
 
 // Diccionarios
 app.get('/app/diccionariosGetTablas', requireAuth, (_, res) => {
-        res.sendFile(`${process.cwd()}/diccionariosGetTablas.js`);
+        res.sendFile(path.resolve(__dirname, `../dist/diccionariosGetTablas.js`));
     });
 
 app.get('/app/diccionarios.js', (_, res) => {
-    res.sendFile(`${process.cwd()}/diccionarios.js`);
+    res.sendFile(path.resolve(__dirname, `../dist/diccionarios.js`));
 });
 
 // Tablas Aprobadas
@@ -419,7 +419,7 @@ function getEndPoints(tabla: string) {
 
 
     app.get('/app/tablaGenerico.js', requireAuth, (_, res) => {
-        res.sendFile(`${process.cwd()}/tablaGenerico.js`);
+        res.sendFile(path.resolve(__dirname, `../dist/tablaGenerico.js`));
     });
 
     const urlEdicion = datosTabla!.urlEdicion;
