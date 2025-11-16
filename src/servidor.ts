@@ -424,11 +424,11 @@ function getEndPoints(tabla: string) {
 
     const urlEdicion = datosTabla!.urlEdicion;
     app.get(`${urlEdicion}:lu`, requireAuth, (_, res) => {
-        res.sendFile(`${process.cwd()}/editarGenerico.html`);
+        res.sendFile(path.resolve(__dirname, "../dist/editarGenerico.html"));
     });
     const urlCreacion = datosTabla!.urlCreacion;
     app.get(`${urlCreacion}`, requireAuth, (_, res) => {
-        res.sendFile(`${process.cwd()}/crearGenerico.html`);
+        res.sendFile(path.resolve(__dirname, "../dist/crearGenerico.html"));
     });
 
 }
