@@ -122,7 +122,7 @@ app.get('/app/archivo-json', requireAuth, (_, res) => {
 })
 
 async function getDbClient() {
-    const client = new Client({ connectionString: process.env.DATABASE_URL });
+    const client = new Client();
     await client.connect();
     return client;
 }

@@ -34,7 +34,7 @@ export async function chequearCantidadAprobadas(lu: string): Promise<string> {
             WHERE lu = $1
         `;
 
-    const clientDb = new Client({ connectionString: process.env.DATABASE_URL });
+    const clientDb = new Client();
     await clientDb.connect();
     const VerAprobadas = await clientDb.query(queryVerAprobadasPorAlumno, [lu]);
     const VerMateriasEnCarrera = await clientDb.query(QueryVerMateriasEnCarrera, [lu]);
