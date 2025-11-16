@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import {Client} from "pg";
 import { generarCertificadoAlumnoLu } from './aida.js';
-import { enviarMail } from './mail.js';
+//import { enviarMail } from './mail.js';
 
 // Este chequeo se hace solo al crear una cursada porque se asume que las notas se cargan bien
 export async function chequearCantidadAprobadas(lu: string): Promise<string> {
@@ -27,13 +27,13 @@ export async function chequearCantidadAprobadas(lu: string): Promise<string> {
                 egreso = $1
             WHERE lu = $2
     `;
-
+    /*
     const QueryGetMailYTituloAlumno = `
             SELECT aida.alumnos.mail, aida.alumnos.titulo
             FROM aida.alumnos
             WHERE lu = $1
         `;
-
+    */
     const clientDb = new Client({ connectionString: process.env.DATABASE_URL });
     await clientDb.connect();
     const VerAprobadas = await clientDb.query(queryVerAprobadasPorAlumno, [lu]);
