@@ -154,7 +154,7 @@
             if (req.ok) {
                 if(tabla == 'cursada'){
                     if(datosCreados['nota'] >= 4){
-                        const resultado = await fetch('/api/v0/' + encodeURIComponent(datosCreados['lu']), {
+                        const resultado = await fetch('/api/v0/aprobadas' + encodeURIComponent(datosCreados['lu']), {
                             method: 'GET',
                             headers: {
                                 'Content-Type': 'application/json'
