@@ -8,6 +8,18 @@ cd ..
 
 mkdir -p dist
 
+cd dist
+
+mkdir -p trabajo
+
+cd trabajo
+
+mkdir -p salida
+
+cd ..
+cd ..
+
+
 cp -f src/crearGenerico.html dist/
 cp -f src/editarGenerico.html dist/
 cp -f src/login.html dist/
