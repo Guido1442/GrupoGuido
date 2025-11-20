@@ -24,4 +24,4 @@ jobs:
       run: chmod +x buildearServidor.sh 
 
     - name: Ejecutar el script buildearServidor.sh
-      run: ./buildearServidor.sh 
+      run: src/buildearServidor.sh 
