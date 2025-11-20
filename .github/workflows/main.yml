@@ -1,0 +1,27 @@
+name: aidaAPI 
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  run_build_script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Descargar el repositorio
+      uses: actions/checkout@v4 
+      
+    - name: Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm' 
+    
+    - name: Dar permisos de ejecución al script
+      run: chmod +x buildearServidor.sh 
+
+    - name: Ejecutar el script buildearServidor.sh
+      run: ./buildearServidor.sh 
