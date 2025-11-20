@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 // codigo base: https://nodemailer.com/
 const transporter = nodemailer.createTransport({
-  host: "sandbox.smtp.mailtrap.io",
+  host: "smtp.gmail.com",
   port: 2525,
   secure: false, // true for 465, false for other ports
   auth: {
@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 
 export async function enviarMail(to: string, certificado: string, titulo: string){
   const mailOptions = {
-        from: '"AIDA API" <noreply@aida.com>',
+        from: '"AIDA API" <aidadb2025@gmail.com>',
         to: to,
         subject: "Certificado de Titulo en Tramite",
         text: `Felicidades!! Conseguiste el titulo de ${titulo}. Te enviamos tu certificado de titulo en Tramite`, // plain‑text body
