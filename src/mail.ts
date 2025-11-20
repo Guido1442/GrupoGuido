@@ -1,15 +1,13 @@
 import nodemailer from 'nodemailer';
 // codigo base: https://nodemailer.com/
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true, // true for 465, false for other ports
+  service:'gmail',
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.TOKEN_MAIL,
   },
-  //connectionTimeout: 120000,
-  //socketTimeout: 120000,
+  connectionTimeout: 120000,
+  socketTimeout: 120000,
 });
 
 
