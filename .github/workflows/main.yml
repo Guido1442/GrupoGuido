@@ -21,7 +21,7 @@ jobs:
         cache: 'npm' 
     
     - name: Dar permisos de ejecución al script
-      run: chmod +x buildearServidor.sh 
+      run: chmod +x src/buildearServidor.sh
 
     - name: Ejecutar el script buildearServidor.sh
       run: src/buildearServidor.sh 
