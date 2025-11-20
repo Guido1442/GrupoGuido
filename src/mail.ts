@@ -1,13 +1,14 @@
 import nodemailer from 'nodemailer';
 // codigo base: https://nodemailer.com/
 const transporter = nodemailer.createTransport({
-  service:'gmail',
+  service: 'gmail',
   auth: {
+    type: 'OAuth2',
     user: process.env.EMAIL_USER,
-    pass: process.env.TOKEN_MAIL,
+    clientId: process.env.OAUTH_CLIENT_ID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    refreshToken: process.env.OAUTH_REFRESH_TOKEN
   },
-  connectionTimeout: 120000,
-  socketTimeout: 120000,
 });
 
 

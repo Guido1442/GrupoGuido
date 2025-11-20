@@ -4,6 +4,7 @@
     "bcrypt": "^6.0.0",
     "express": "^5.1.0",
     "express-session": "^1.18.2",
+    "googleapis": "^166.0.0",
     "nodemailer": "^7.0.10",
     "pg": "^8.16.3"
   },
