@@ -81,10 +81,35 @@ window.addEventListener('load', async function() {
     var req = await fetch('/api/v0/' + (datosTabla!.tabla === 'alumno' ? 'alumnos' : datosTabla!.tabla) + '/');
     var data = await req.json();
 
+
+    const customSort = (a: any, b: any, columna: string) => {
+        let valA = a[columna];
+        let valB = b[columna];
+
+
+        if (valA === null || valA === undefined) return (valB === null || valB === undefined) ? 0 : 1;
+        if (valB === null || valB === undefined) return -1;
+
+        const isNumeric = !isNaN(parseFloat(valA)) && isFinite(valA);
+
+        let comparison = 0;
+
+        if (isNumeric) {
+            const numA = parseFloat(valA);
+            const numB = parseFloat(valB);
+            comparison = numA - numB;
+        }
+        else {
+            comparison = valA.toString().localeCompare(valB.toString());
+        }
+        return comparison;
+    };
+
+
     if (data.length > 0) {
         columnas = Object.keys(data[0]);
         if (ordenarPor) {
-            data.sort((a:any, b:any) => a[ordenarPor!].toString().localeCompare(b[ordenarPor!].toString()));
+            data.sort((a:any, b:any) => customSort(a, b, ordenarPor!));
             if (isDesc) data.reverse();
         }
     }
