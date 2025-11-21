@@ -27,8 +27,15 @@ window.addEventListener('load', async function() {
     const datosTabla = DiccionariosTablas.find(t => t.tabla === tabla);
     document.body.innerHTML = ``;
     var table = dom('table', {id:'tabla'}, []) as HTMLTableElement;
+    var comoOrdenar = dom('small', {}, [text("Para ordenar la tabla por una columna, haga click en el nombre de la columna.")]);
+    var comoOrdenar2 = dom('small', {}, [text("Para ordenar de forma descendente, haga click nuevamente.")]);
     var main = dom('div', {className:'main'}, [
         dom('h1', {}, [text(datosTabla!.text)]),
+        comoOrdenar,
+        dom('br'),
+        comoOrdenar2,
+        dom('br'),
+        dom('br'),
         table
     ]);
     document.body.appendChild(main);
@@ -52,11 +59,36 @@ window.addEventListener('load', async function() {
     main.appendChild(botonCrear);
     main.appendChild(botonMenu)
     var row = table.insertRow();
+
+    let ordenarPor = (new URLSearchParams(window.location.search)).get("ordenarpor");
+    let isDesc = ordenarPor ? ordenarPor.endsWith("_desc") : false;
+    if (ordenarPor && isDesc) ordenarPor = ordenarPor.slice(0, -5);
+    let columnas: string[] = [];
+
+    let i = 0;
     for (const campo of datosTabla!.campos){
-        cel(row, campo);
+        let celda = cel(row, campo);
+        let indice = i
+        celda.onclick = () => {
+            let columna = columnas[indice]!;
+            if (ordenarPor == columna && !isDesc) columna += "_desc"
+            const url = new URL(window.location.href);
+            url.searchParams.set("ordenarpor", columna);
+            location.href = url.toString();
+        }
+        i++;
     }
     var req = await fetch('/api/v0/' + (datosTabla!.tabla === 'alumno' ? 'alumnos' : datosTabla!.tabla) + '/');
     var data = await req.json();
+
+    if (data.length > 0) {
+        columnas = Object.keys(data[0]);
+        if (ordenarPor) {
+            data.sort((a:any, b:any) => a[ordenarPor!].localeCompare(b[ordenarPor!]));
+            if (isDesc) data.reverse();
+        }
+    }
+
     data.forEach((registro:Record<string, string>) => {
         var row = table.insertRow();
         for (const elemento of Object.entries(registro)){
