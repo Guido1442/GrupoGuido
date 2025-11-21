@@ -83,7 +83,7 @@ export async function cargarNovedadesAlumnosDesdeCsv(clientDb:Client, archivoCsv
 
 export async function cargarNovedadesAlumnosDesdeJson(alumnosJson: any[]){
     var {dataLines: listaDeAlumnosCompleta, columns: columnas} = await leerYParsearJson(alumnosJson);
-    const clientDb = new Client({ connectionString: process.env.DATABASE_URL })
+    const clientDb = new Client(process.env.esRender === "1" ? { connectionString: process.env.DATABASE_URL } : undefined)
     await clientDb.connect()
     await cargarNuevosAlumnos(clientDb, listaDeAlumnosCompleta, columnas);
     await clientDb.end();

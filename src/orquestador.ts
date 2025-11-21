@@ -17,7 +17,7 @@ export type ListaDeEjecucion = ElementoDeEjecucion[]
 export async function orquestador(definicionOperaciones:DefinicionesDeOperaciones, listaDeEjecucion: ListaDeEjecucion){
     let resultado:any = null;
     console.log('Por procesar', listaDeEjecucion);
-    const clientDb = new Client({ connectionString: process.env.DATABASE_URL })
+    const clientDb = new Client(process.env.esRender === "1" ? { connectionString: process.env.DATABASE_URL } : undefined)
     await clientDb.connect()
     for (const {operacion, argumentos} of listaDeEjecucion) {
         console.log('procesando', operacion);
