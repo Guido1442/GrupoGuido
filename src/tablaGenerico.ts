@@ -84,7 +84,7 @@ window.addEventListener('load', async function() {
     if (data.length > 0) {
         columnas = Object.keys(data[0]);
         if (ordenarPor) {
-            data.sort((a:any, b:any) => a[ordenarPor!].localeCompare(b[ordenarPor!]));
+            data.sort((a:any, b:any) => a[ordenarPor!].toString().localeCompare(b[ordenarPor!].toString()));
             if (isDesc) data.reverse();
         }
     }
