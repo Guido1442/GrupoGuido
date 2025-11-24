@@ -15,6 +15,7 @@ mkdir -p trabajo
 cd trabajo
 
 mkdir -p salida
+mkdir -p entrada
 
 cd ..
 cd ..
