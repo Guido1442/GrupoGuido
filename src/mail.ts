@@ -11,7 +11,7 @@ const fromPorEstado:fromPorEstado[] = [
 ]
 
 let transporter:any;
-if(process.env.esRender == '0'){
+if(process.env.esRender != '1'){
  transporter = nodemailer.createTransport({
     service:'gmail',
     auth: {
