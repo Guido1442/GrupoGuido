@@ -51,3 +51,6 @@ CREATE TABLE aida.usuarios (
     activo BOOLEAN DEFAULT TRUE,
     ultimo_acceso DATE
 );
+
+GRANT select, insert, update, delete ON ALL TABLES IN SCHEMA aida TO aida_admin;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA aida TO aida_admin;
