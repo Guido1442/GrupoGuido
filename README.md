@@ -38,9 +38,9 @@ Debido a restricciones de firewall en Render, el envío de mails solo funciona a
 
 Con el propósito de enviar emails reales, se creó una cuenta dedicada de Gmail, denominada `aidadb2025@gmail.com`. Al tratarse de un repositorio público, las credenciales no están incluidas de manera explícita.
 
-Para probar esta funcionalidad, se debe fijar la variable de entorno llamada `TOKEN_MAIL`. Consta de 16 letras minúsculas, separadas por espacios cada 4 letras, alcanzando un total de 20 caracteres.
+Para probar esta funcionalidad, se debe fijar la variable de entorno llamada `TOKEN_MAIL`. Consta de 16 letras minúsculas, separadas por espacios cada 4 letras, alcanzando un total de 19 caracteres.
 
-El valor a utilizar es `TOKEN_MAIL=basa rstk higr xxxx`, pero el último grupo de cuatro caracteres debe ser "Filtro Búsquedas Y Visualización".
+El valor a utilizar es `TOKEN_MAIL=basa rstk higr XXXX`, pero el último grupo de cuatro caracteres debe ser "Filtro Búsquedas Y Visualización".
 
 Luego, seguir los siguientes pasos para simular la finalización de una carrera y recibir el correo:
 1. Crear, mediante el frontend de la aplicación, un nuevo alumno cuyo email será el que reciba el correo.
