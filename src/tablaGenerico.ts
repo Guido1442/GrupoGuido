@@ -90,7 +90,7 @@ window.addEventListener('load', async function() {
         if (valB === null || valB === undefined) return -1;
 
         const normalizeDate = (value: string): string => {
-            if (typeof value === 'string' && value.length >= 10 && value.match(/^\d{2}-\d{2}-\d{4}/)) {
+            if (typeof value === 'string' && value.length >= 10 && value.match(/^\d{2}\/\d{2}\/\d{4}/)) {
                 const partes = value.slice(0, 10).split('/');
                 if (partes.length === 3) {
                     return `${partes[2]}/${partes[1]}/${partes[0]}`;
