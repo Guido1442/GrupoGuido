@@ -152,9 +152,10 @@
         if(datosIniciales){
             for([clave, {id, nombreActual, nuevoNombre, fecha }] of Object.entries(datosIniciales.campos)){
                 if(fecha){
-                    const valorInicial = alumno[id] ? alumno[id].slice(0,10) : 'dd/mm/yy';
-                    document.getElementById(nombreActual).textContent = valorInicial;
-                    document.getElementById(nuevoNombre).value = valorInicial;
+                    const valorInicialDer = alumno[id] ? alumno[id].slice(0, 10) : 'dd/mm/yy';
+                    const valorInicialIzq = alumno[id] ? alumno[id].slice(0, 10).split('-').reverse().join('/') : 'dd/mm/yy';
+                    document.getElementById(nombreActual).textContent = valorInicialIzq;
+                    document.getElementById(nuevoNombre).value = valorInicialDer;
                 }
                 else{
                     const valorInicial = alumno[id];

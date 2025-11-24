@@ -86,22 +86,43 @@ window.addEventListener('load', async function() {
         let valA = a[columna];
         let valB = b[columna];
 
-
         if (valA === null || valA === undefined) return (valB === null || valB === undefined) ? 0 : 1;
         if (valB === null || valB === undefined) return -1;
 
-        const isNumeric = !isNaN(parseFloat(valA)) && isFinite(valA);
+        const normalizeDate = (value: string): string => {
+            if (typeof value === 'string' && value.length >= 10 && value.match(/^\d{2}-\d{2}-\d{4}/)) {
+                const partes = value.slice(0, 10).split('-');
+                if (partes.length === 3) {
+                    return `${partes[2]}-${partes[1]}-${partes[0]}`;
+                }
+            }
+            return value;
+        };
+
+        const normalizedA = normalizeDate(valA);
+        const normalizedB = normalizeDate(valB);
+
+        const dateA = new Date(normalizedA);
+        const dateB = new Date(normalizedB);
+        const isDate = !isNaN(dateA.getTime()) && !isNaN(dateB.getTime());
 
         let comparison = 0;
 
-        if (isNumeric) {
-            const numA = parseFloat(valA);
-            const numB = parseFloat(valB);
-            comparison = numA - numB;
+        if (isDate) {
+            comparison = dateA.getTime() - dateB.getTime();
         }
         else {
-            comparison = valA.toString().localeCompare(valB.toString());
+            const isNumeric = !isNaN(parseFloat(valA)) && isFinite(valA);
+            if (isNumeric) {
+                const numA = parseFloat(valA);
+                const numB = parseFloat(valB);
+                comparison = numA - numB;
+            }
+            else {
+                comparison = valA.toString().localeCompare(valB.toString());
+            }
         }
+
         return comparison;
     };
 
