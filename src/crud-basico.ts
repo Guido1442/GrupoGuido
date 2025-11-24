@@ -102,8 +102,8 @@ const queryImportarPorTabla: QueryImportarPorTabla[] = [
                 apellido,
                 nombres,
                 titulo,
-                TO_CHAR(titulo_en_tramite, 'DD-MM-YYYY') AS titulo_en_tramite,
-                TO_CHAR(egreso, 'DD-MM-YYYY') AS egreso,
+                TO_CHAR(titulo_en_tramite, 'DD/MM/YYYY') AS titulo_en_tramite,
+                TO_CHAR(egreso, 'DD/MM/YYYY') AS egreso,
                 mail
             FROM aida.alumnos`,
       },
