@@ -10,4 +10,6 @@ COPY /Y "login.html" "..\dist\"
 COPY /Y "style.css" "..\dist\"
 COPY /Y "styleMenu.css" "..\dist\"
 
+MKDIR "..\dist\trabajo\salida" 2>nul
+
 ENDLOCAL
