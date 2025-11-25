@@ -13,4 +13,7 @@ COPY /Y "styleMenu.css" "..\dist\"
 MKDIR "..\dist\trabajo\salida" 2>nul
 MKDIR "..\dist\trabajo\entrada" 2>nul
 
+MKDIR "..\dist\recursos" 2>nul
+COPY /Y "recursos/plantilla-certificado.html" "..\dist\recursos"
+
 ENDLOCAL

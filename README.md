@@ -28,6 +28,26 @@ curl -X POST http://localhost:3000/api/v0/auth/register ^
   -d "{\"username\":\"admin\",\"password\":\"admin123\",\"nombre\":\"Administrador\",\"email\":\"admin@aida.com\"}"
 ```
 
+## Ejecutar CLI y Polar
+
+# Ver AIDA_CARPETA_INTERCAMBIO
+
+Para ejecutar CLI, seguir los siguientes pasos.
+1. Seguir los pasos del 1 hasta el 8 para la ejecucion local
+2. Hacer cd dist
+3. Si va a ejecutar el comando para cargar alumnos ejecutar node cli.js --archivo XXXX.csv
+4. El archivo XXXX.csv se debe encontrar en dist/trabajo/entrada
+5. Si va a ejecutar lu o fecha ejecute node cli.js --lu par o node cli.js --fecha par donde par representa el parametro
+
+Para ejecutar Polar, seguir los siguiente pasos.
+1. Seguir los pasos del 1 hasta el 8 para la ejecucion local
+2. Hacer cd dist
+3. Crear un archivo generacionCertificados.csv del cuya primera fila sea tipo,parametro y en cada fila siguiente introduzca los certificados que quiera generar, sea fecha o lu en la primer columna y el parametro en la segunda siempre separados por coma
+4. Para ejecutar carga, en la primer columna debe ir archivo y en la segunda el nombre del archivo .csv sin espacio entre la coma y el nombre del archivo al igual que en lu y fecha
+5. Ejecute node polar.js, entre en el generacionCertificado.csv y aprete crtl+s
+
+En ambos casos vera los certificados generados en la carpeta dist/trabajo/salida
+
 ## Envío de mails
 
 Nuestra versión extendida del proyecto cuenta con envio de emails. Esta funcionalidad se implementó con la libreria [`nodemailer`](https://www.npmjs.com/package/nodemailer).

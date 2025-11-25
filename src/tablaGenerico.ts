@@ -40,7 +40,7 @@ window.addEventListener('load', async function() {
     ]);
     document.body.appendChild(main);
 
-
+    //Boton de creacion
     var botonCrear = dom('button', { class: 'boton-crear', type: 'button' }, [text(datosTabla!.crear)]) as HTMLButtonElement;
     botonCrear.onclick = () => {
         if(datosTabla != undefined){
@@ -50,6 +50,7 @@ window.addEventListener('load', async function() {
         }
     };
 
+    // Boton para volver al menu
     var botonMenu = dom('button', { class: 'boton-menu', type: 'button' }, [text('<- Menu')]) as HTMLButtonElement;
     botonMenu.onclick = () => {
         window.location.href = 'menu'
@@ -60,6 +61,7 @@ window.addEventListener('load', async function() {
     main.appendChild(botonMenu)
     var row = table.insertRow();
 
+    //Sacar de la URL como se va a ordenar la tabla
     let ordenarPor = (new URLSearchParams(window.location.search)).get("ordenarpor");
     let isDesc = ordenarPor ? ordenarPor.endsWith("_desc") : false;
     if (ordenarPor && isDesc) ordenarPor = ordenarPor.slice(0, -5);
@@ -81,7 +83,8 @@ window.addEventListener('load', async function() {
     var req = await fetch('/api/v0/' + (datosTabla!.tabla === 'alumno' ? 'alumnos' : datosTabla!.tabla) + '/');
     var data = await req.json();
 
-
+    // Funcion de sorting que maneja null, fechas, numeros y strings
+    // Tomamos como fecha de ordenamiento el timezone argentino de dd/mm/yyyy
     const customSort = (a: any, b: any, columna: string) => {
         let valA = a[columna];
         let valB = b[columna];
@@ -141,7 +144,7 @@ window.addEventListener('load', async function() {
             cel(row, elemento[1]);
         }
 
-
+        // Creacion boton editar
         var botonEditar = dom('button', { class: 'boton-editar' }, [text('Editar')]) as HTMLButtonElement;
 
         botonEditar.onclick = () => {
@@ -164,6 +167,7 @@ window.addEventListener('load', async function() {
             var celdaEditar = row.insertCell();
             celdaEditar.appendChild(botonEditar);
         }
+        // Creacion boton borrar
         var celdaBorrar = row.insertCell();
         var botonBorrar = dom('button', { class: 'boton-borrar', type: 'button' }, [text('Borrar')]) as HTMLButtonElement;
 

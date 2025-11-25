@@ -105,7 +105,7 @@
 
 <script src="/app/diccionarios.js"></script>
 <script>
-
+    // Se inicializan los slots para los datos actuales y los a editar
     function crearFormulario(campo) {
         return `
         <div class="form-group">
@@ -134,6 +134,7 @@
         form.innerHTML = '';
         if (window.CamposParaEditarPorTabla) {
             const camposConfig = window.CamposParaEditarPorTabla.find(c => c.tabla === tabla);
+            // Se inicializan los slots para cada campo
             for(const campo of camposConfig.campos) {
                 form.innerHTML += crearFormulario(campo);
             }
@@ -144,7 +145,7 @@
 
 
 <script>
-
+    // Se cargan en el slot actual y en el a editar los valores actuales de los registros
     function cargarDatos(alumno) {
         const partes = window.location.pathname.split('/');
         const tabla = partes[partes.length - 3];
@@ -206,6 +207,7 @@ window.onload = async function() {
 
     document.getElementById('form-edicion').addEventListener('submit', async function(event) {
         event.preventDefault();
+        // Se obtienen los datos ingresados
         const form = event.target;
         const partes = window.location.pathname.split('/');
         const tabla = partes[partes.length - 3];

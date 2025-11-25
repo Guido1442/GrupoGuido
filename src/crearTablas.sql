@@ -33,6 +33,8 @@ CREATE TABLE aida.Cursada (
     FOREIGN KEY (id_Materia) REFERENCES aida.Materia(id_Materia)
 );
 
+CREATE UNIQUE INDEX ix_una_aprobada_max ON aida.cursada USING btree (lu, id_materia) WHERE (nota >= 4)
+
 CREATE TABLE aida.AlumnosPorCarrera (
     lu TEXT NOT NULL,
     id_Carrera INT NOT NULL,

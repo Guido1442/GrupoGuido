@@ -61,7 +61,7 @@ app.get('/ask', (req, res) => {
 app.get('/app/archivo', requireAuth, (_, res) => {
     res.redirect('/app/archivo-json');
 })
-
+// HTML que recibe el archivo csv y lo convierte en un json que manda al backend
 const HTML_ARCHIVO_JSON=
 `<!DOCTYPE html>
 <html lang="es">
@@ -288,6 +288,8 @@ function apiBackend(operaciones: DefinicionesDeOperaciones) {
             res.send(HTML_PANTALLA);
         });
 
+        //Operaciones lu y fecha
+
         app.get('/api/v0/'+operacion.operacion+'/:arg1', requireAuthAPI, async (req, res) => {
             console.log(req.params, req.query, req.body);
             const argumentos = [req.params.arg1 as string];
@@ -319,6 +321,7 @@ function apiBackend(operaciones: DefinicionesDeOperaciones) {
             }
         })
     }
+    // Cerrar sesion
     menu += `<li><a href="#" id="boton-logout" class="boton-logout">Cerrar sesión</a></li>`;
     menu += `</ul>
              <script>
@@ -336,6 +339,8 @@ function apiBackend(operaciones: DefinicionesDeOperaciones) {
     app.get('/app/menu', requireAuth, (_, res) => {
         res.send(menu)
     })
+
+    // Recibir el json del frontend y mandarlo a procesamiento
 
     app.patch('/api/v0/alumnos', requireAuthAPI, async (req, res) => {
         const alumnosJson = req.body;

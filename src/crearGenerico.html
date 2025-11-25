@@ -105,6 +105,7 @@
         form.innerHTML = '';
         if (window.CamposPorTabla) {
             const camposConfig = window.CamposPorTabla.find(c => c.tabla === tabla);
+            // Se inicializa el slot para cada campo
             for(const campo of camposConfig.campos) {
                 form.innerHTML += crearFormulario(campo);
             }
@@ -113,7 +114,7 @@
     });
 </script>
 <script>
-
+    // Se setean los valores inciales segun el tipo de cada slot
     function inicializarDatos() {
         const partes = window.location.pathname.split('/');
         const tabla = partes[partes.length - 2];
@@ -135,6 +136,7 @@
     }
     document.getElementById('form-creacion').addEventListener('submit', async function(event) {
         event.preventDefault();
+        // Se extraen los datos ingresados
         const partes = window.location.pathname.split('/');
         const tabla = partes[partes.length - 2];
         const form = event.target;
@@ -152,6 +154,7 @@
             body: JSON.stringify(datosCreados)
             });
             if (req.ok) {
+                // Implementacion automatica de los certificados
                 if(tabla == 'cursada'){
                     if(datosCreados['nota'] >= 4){
                         const resultado = await fetch('/app/aprobadas/' + encodeURIComponent(datosCreados['lu']), {
@@ -161,6 +164,7 @@
                             },
 
                         });
+                        // Si el resultado es 200 se abre una nueva pestaña con el certificado
                         if(resultado.status == 200){
                             const certificadoHTML = await resultado.text();
                             const nuevaVentana = window.open('', '_blank');

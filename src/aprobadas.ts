@@ -36,11 +36,16 @@ export async function chequearCantidadAprobadas(lu: string): Promise<string> {
 
     const clientDb = new Client(process.env.esRender === "1" ? { connectionString: process.env.DATABASE_URL } : undefined);
     await clientDb.connect();
+
     const VerAprobadas = await clientDb.query(queryVerAprobadasPorAlumno, [lu]);
     const VerMateriasEnCarrera = await clientDb.query(QueryVerMateriasEnCarrera, [lu]);
+
     let resultado = '';
+    // Resultados querys
     const cantidadAprobadas = parseInt(VerAprobadas.rows[0].cantidad_aprobadas, 10);
     const CantidadMateriasEnCarrera = parseInt(VerMateriasEnCarrera.rows[0].cantidad_materias, 10);
+
+    // Comparacion para ver si aprobo todo, se asume una materia solo pertenece a una carrera
     if (cantidadAprobadas == CantidadMateriasEnCarrera){
         const fechaDeHoy = new Date().toISOString()
         await clientDb.query(QueryActualizarEgreso, [fechaDeHoy, lu]);
