@@ -27,5 +27,5 @@ cp -f src/editarGenerico.html dist/
 cp -f src/login.html dist/
 cp -f src/style.css dist/
 cp -f src/styleMenu.css dist/
-cp -f recursos/plantilla-certificado.html dist/recursos/
+cp -f ../recursos/plantilla-certificado.html dist/recursos/
 
