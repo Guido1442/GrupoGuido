@@ -17,9 +17,10 @@ Para ejecutar la aplicación localmente en Windows, seguir los siguientes pasos.
 5. Ejecutar `npm install`.
 6. Ejecutar `.\buildearServidor.bat`
 7. Ejecutar `.\..\recursos\ejemplo-local-sets.bat` para cargar las enviroment variables
-8. Ubicarse afuera del directorio actual mediante `cd ..`
-9. Ejecutar `node dist\servidor.js`
-10. Abrir http://localhost:3000 en tu navegador favorito :)
+8. Declarar variable de ambiente AIDA_CARPETA_INTERCAMBIO = "path/dist/trabajo"
+9. Ubicarse afuera del directorio actual mediante `cd ..`
+10. Ejecutar `node dist\servidor.js`
+11. Abrir http://localhost:3000 en tu navegador favorito :)
 
 Para crear el usuario admin de la aplicación, ejecutar el siguiente comando:
 ```
@@ -29,8 +30,6 @@ curl -X POST http://localhost:3000/api/v0/auth/register ^
 ```
 
 ## Ejecutar CLI y Polar
-
-# Ver AIDA_CARPETA_INTERCAMBIO
 
 Para ejecutar CLI, seguir los siguientes pasos.
 1. Seguir los pasos del 1 hasta el 8 para la ejecucion local
@@ -42,7 +41,7 @@ Para ejecutar CLI, seguir los siguientes pasos.
 Para ejecutar Polar, seguir los siguiente pasos.
 1. Seguir los pasos del 1 hasta el 8 para la ejecucion local
 2. Hacer cd dist
-3. Crear un archivo generacionCertificados.csv del cuya primera fila sea tipo,parametro y en cada fila siguiente introduzca los certificados que quiera generar, sea fecha o lu en la primer columna y el parametro en la segunda siempre separados por coma
+3. Crear un archivo generacion_certificados.csv del cuya primera fila sea tipo,parametro y en cada fila siguiente introduzca los certificados que quiera generar, sea fecha o lu en la primer columna y el parametro en la segunda siempre separados por coma
 4. Para ejecutar carga, en la primer columna debe ir archivo y en la segunda el nombre del archivo .csv sin espacio entre la coma y el nombre del archivo al igual que en lu y fecha
 5. Ejecute node polar.js, entre en el generacionCertificado.csv y aprete crtl+s
 
