@@ -29,6 +29,8 @@ curl -X POST http://localhost:3000/api/v0/auth/register ^
   -d "{\"username\":\"admin\",\"password\":\"admin123\",\"nombre\":\"Administrador\",\"email\":\"admin@aida.com\"}"
 ```
 
+Si esta en linux ejecutar buildearServidor.sh y el comando de curl que esta en la clase 7
+
 ## Ejecutar CLI y Polar
 
 Para ejecutar CLI, seguir los siguientes pasos.
